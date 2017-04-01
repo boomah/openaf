@@ -18,7 +18,8 @@ lazy val server = project.in(file("server")).
     mainClass in (Compile, run) := Some("openaf.server.Server"),
     libraryDependencies ++= Seq(
       "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
-      "ch.qos.logback" % "logback-classic" % "1.1.7"
+      "ch.qos.logback" % "logback-classic" % "1.1.7",
+      "com.typesafe.akka" %% "akka-http" % "10.0.5"
     )
   ).
   dependsOn(apiJvm)
