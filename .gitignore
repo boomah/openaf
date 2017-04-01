@@ -1,6 +1,7 @@
 .idea/workspace.xml
 .idea/libraries
 .idea/modules.xml
+.idea/kotlinc.xml
 *.iml
 target
 .DS_Store

@@ -19,14 +19,18 @@ lazy val server = project.in(file("server")).
     libraryDependencies ++= Seq(
       "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0",
       "ch.qos.logback" % "logback-classic" % "1.1.7",
-      "com.typesafe.akka" %% "akka-http" % "10.0.5"
+      "com.typesafe.akka" %% "akka-http" % "10.0.5",
+      "com.lihaoyi" %% "scalatags" % "0.6.3"
     )
   ).
   dependsOn(apiJvm)
 
 lazy val client = project.in(file("client")).
   settings(
-    commonSettings
+    commonSettings,
+    libraryDependencies ++= Seq(
+      "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+    )
   ).
   enablePlugins(ScalaJSPlugin).
   dependsOn(apiJs)

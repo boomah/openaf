@@ -6,6 +6,7 @@ import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import com.typesafe.scalalogging.StrictLogging
+import openaf.server.html.IndexPage
 
 import scala.util.{Failure, Success}
 
@@ -17,12 +18,22 @@ object Server extends StrictLogging {
     implicit val materializer = ActorMaterializer()
     implicit val executionContext = actorSystem.dispatcher
 
-    val route =
-      path("") {
+    val route = {
+      pathSingleSlash {
         get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "Hello"))
+          complete {
+            logger.info("Index")
+            HttpEntity(ContentTypes.`text/html(UTF-8)`, IndexPage.page)
+          }
+        }
+      } ~
+      path("client-fastopt.js") {
+        get {
+          logger.info("js file")
+          getFromDirectory("client/target/scala-2.12/client-fastopt.js")
         }
       }
+    }
 
     val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 

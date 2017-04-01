@@ -3,9 +3,9 @@
   <component name="ScalaCompilerConfiguration">
     <option name="incrementalityType" value="SBT" />
     <profile name="SBT 1" modules="openaf,apiJVM,server" />
-    <profile name="SBT 2" modules="apiJS,client">
+    <profile name="SBT 3" modules="apiJS,client">
       <plugins>
-        <plugin path="$USER_HOME$/.ivy2/cache/org.scala-js/scalajs-compiler_2.12.1/jars/scalajs-compiler_2.12.1-0.6.14.jar" />
+        <plugin path="$USER_HOME$/.ivy2/cache/org.scala-js/scalajs-compiler_2.12.1/jars/scalajs-compiler_2.12.1-0.6.15.jar" />
       </plugins>
     </profile>
   </component>
